@@ -9,18 +9,13 @@ class StripeController < ApplicationController
   end
 
   def create
-    # Stripe API call to sign up customer on subscription plan
-    # stripe_new_user_data = ActiveSupport::JSON.decode(`curl https://api.stripe.com/v1/customers \
-    #   -u #{Stripe.api_key}: \
-    #   -d card[number]=#{params['card']['number']} \
-    #   -d card[exp_month]=#{params['card']['exp_month']} \
-    #   -d card[exp_year]=#{params['card']['exp_year']} \
-    #   -d card[cvc]=#{params['card']['cvc']} \
-    #   -d plan=#{params['frequency']}`)
-
-    current_user.update_attributes(stripe_customer_id: Charge.stripe_new_user_data(params)['id'], 
-                                   stripe_subscription_id: Charge.stripe_new_user_data(params)['subscriptions']['data'][0]['id'])
+    current_user.update_attributes(stripe_customer_id: new_stripe['id'], 
+                                   stripe_subscription_id: new_stripe['subscriptions']['data'][0]['id'])
     redirect_to '/'
+  end
+
+  def new_stripe
+    Stripe.stripe_new_user_data(params)
   end
 
   def edit
