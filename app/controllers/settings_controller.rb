@@ -6,9 +6,9 @@ class SettingsController < ApplicationController
 
   def unfinished_signup
     if !plaid_complete
-      redirect_to plaid_new_path
+      redirect_to new_user_plaid
     elsif !stripe_complete
-      redirect_to stripe_new_path
+      redirect_to new_user_stripe
     elsif !charity_complete
       all_charities
       redirect_to charities_users_path
