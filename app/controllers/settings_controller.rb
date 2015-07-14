@@ -10,7 +10,7 @@ class SettingsController < ApplicationController
     elsif !stripe_complete
       redirect_to new_user_stripe
     elsif !charity_complete
-      all_charities
+      # all_charities -- I think this is duplicating
       redirect_to charities_users_path
     end
   end
