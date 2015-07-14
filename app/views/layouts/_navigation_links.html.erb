@@ -5,9 +5,9 @@
     <ul class="dropdown-menu">
       <li><%= link_to 'Edit Account', edit_user_registration_path %></li>
       <li role="separator" class="divider"></li>
-      <li><%= link_to 'Edit Banking', plaid_update_path %></li>
+      <li><%= link_to 'Edit Banking', edit_user_plaid_path %></li>
       <li role="separator" class="divider"></li>
-      <li><%= link_to 'Edit Charge', stripe_update_path %></li>
+      <li><%= link_to 'Edit Charge', user_stripe_path, method: :put %></li>
       <li role="separator" class="divider"></li>
       <li><%= link_to 'Edit Charity', charities_users_path(current_user) %></li>
     </ul>
