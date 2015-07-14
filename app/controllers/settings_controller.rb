@@ -4,10 +4,6 @@ class SettingsController < ApplicationController
 
   before_filter :authenticate_user!
 
-  def index
-    render :index
-  end
-
   def unfinished_signup
     if !plaid_complete
       redirect_to plaid_new_path
